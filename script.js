@@ -1,5 +1,10 @@
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+//THREE.js
+import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+
+//OrbitControls
+import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+
+
 
 // Ensure canvas
 let canvas = document.querySelector('canvas.webgl')
@@ -69,7 +74,6 @@ room1.add(dirLight);
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
-document.body.appendChild(renderer.domElement)
 
 // Controls
 const controls = new OrbitControls(camera, renderer.domElement)
