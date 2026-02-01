@@ -1,0 +1,22 @@
+{
+  "name": "mossroomproject",
+  "version": "1.0.0",
+  "type":"module",
+  "description": "",
+  "main": "mossroom.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "less": "^4.5.1",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "three": "^0.182.0"
+  }
+}
