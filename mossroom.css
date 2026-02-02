@@ -21,3 +21,11 @@ body {
 #fade.active {
   opacity: 1;
 }
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+canvas.webgl {
+  display: block;
+}

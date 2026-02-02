@@ -1,8 +1,7 @@
-//THREE.js
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
 
-//OrbitControls
-import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+
+import * as THREE from 'https://esm.sh/three@0.160.0';
+import { OrbitControls } from 'https://esm.sh/three@0.160.0/examples/jsm/controls/OrbitControls.js';
 
 
 
@@ -51,11 +50,13 @@ const skybox = new THREE.Mesh(skyboxGeo, materialArray)
 room2.add(skybox)
 
 // Camera
-const camera = new THREE.PerspectiveCamera(55, sizes.width / sizes.height, 0.1, 30000)
+const camera = new THREE.PerspectiveCamera(
+  55,
+  sizes.width / sizes.height,
+  0.1,
+  30000
+);
 camera.position.set(0, 1.6, 2);
-camera.lookAt(0, 1.6, 0);
-room1.add(camera);
-room2.add(camera);
 
 
 
@@ -76,11 +77,16 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
 
 // Controls
-const controls = new OrbitControls(camera, renderer.domElement)
-controls.addEventListener('change', () => renderer.render(currentScene, camera))
-controls.minDistance = 1
-controls.maxDistance = 20
+const controls = new OrbitControls(camera, renderer.domElement);
 
+
+// Look at the sphere
+controls.target.set(0, 1.6, -1);
+controls.update();
+
+// Optional limits
+controls.minDistance = 1;
+controls.maxDistance = 20;
 
 // Resize handling
 window.addEventListener('resize', () => {
@@ -198,8 +204,6 @@ function startFadeTransition() {
   setTimeout(() => {
     currentScene = room2;
 
-    // optional: reposition camera for room 2
-    camera.position.set(0, 0, 0);
 
     setTimeout(() => {
       fadeDiv.classList.remove("active");
@@ -223,7 +227,7 @@ window.addEventListener("mousemove", (event) => {
   hoveringButton = hits.length > 0;
 });
 
-// Animation loop
+// animation loop
 function animate() {
   requestAnimationFrame(animate);
 
@@ -242,6 +246,8 @@ function animate() {
 
   renderer.render(currentScene, camera);
 }
+
+
 
 animate();
 
